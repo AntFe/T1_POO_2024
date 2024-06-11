@@ -6,10 +6,21 @@ public class Qualificacao {
     private String qualis;
     private Veiculo veiculoRelacionado;
 
-    public Qualificacao(int ano, String siglaVeiculo, String qualis) {
+    private void internalBuilder(int ano, String siglaVeiculo, String qualis){
         this.ano = ano;
         this.siglaVeiculo = siglaVeiculo;
         this.qualis = qualis;
+    }
+
+    public Qualificacao(int ano, String siglaVeiculo, String qualis) {
+        // this.ano = ano;
+        // this.siglaVeiculo = siglaVeiculo;
+        // this.qualis = qualis;
+        internalBuilder(ano, siglaVeiculo, qualis);
+    }
+    public Qualificacao(int ano, String siglaVeiculo, String qualis, Veiculo veiculoRelacionado){
+        internalBuilder(ano, siglaVeiculo, qualis);
+        this.veiculoRelacionado = veiculoRelacionado;
     }
 
     public int getAno() {
