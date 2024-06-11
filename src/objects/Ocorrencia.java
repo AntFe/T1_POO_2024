@@ -2,7 +2,7 @@ package objects;
 
 import java.time.LocalDate;
 
-public class Ocorrencia {
+public class Ocorrencia implements defaultInterface{
     private long codigo;
     private String evento;
     private LocalDate dataInicio;
@@ -13,6 +13,10 @@ public class Ocorrencia {
         this.evento = evento;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
+    }
+
+    public void showInfo(){
+
     }
 
     public long getCodigo() {

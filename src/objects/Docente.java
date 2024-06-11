@@ -1,7 +1,7 @@
 package objects;
 import java.time.LocalDate;
 
-public class Docente {
+public class Docente implements defaultInterface{
     private long codigo;
     private String nome;
     private LocalDate dataNascimento;
@@ -14,6 +14,10 @@ public class Docente {
         this.dataNascimento = dataNascimento;
         this.dataIngresso = dataIngresso;
         this.coordenadorStatus = false;
+    }
+
+    public void showInfo(){
+        
     }
 
     public long getCodigo() {

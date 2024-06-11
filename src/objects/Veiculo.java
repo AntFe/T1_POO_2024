@@ -1,6 +1,6 @@
 package objects;
 
-public class Veiculo {
+public class Veiculo implements defaultInterface {
     private String sigla;
     private String nome;
     private char tipo;
@@ -18,6 +18,13 @@ public class Veiculo {
     public String getSigla() {
         return sigla;
     }
+
+
+    public void showInfo(){
+
+        
+    }
+
 
     public String getNome() {
         return nome;

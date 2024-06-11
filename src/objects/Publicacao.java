@@ -2,7 +2,7 @@ package objects;
 
 import java.util.List;
 
-public class Publicacao {
+public class Publicacao implements defaultInterface{
     private int ano;
     private String siglaVeiculo;
     private String titulo;
@@ -28,6 +28,11 @@ public class Publicacao {
     public int getAno() {
         return ano;
     }
+
+    public void showInfo(){
+        
+    }
+
 
     public String getSiglaVeiculo() {
         return siglaVeiculo;

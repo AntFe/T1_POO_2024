@@ -1,6 +1,6 @@
 package objects;
 
-public class Qualificacao {
+public class Qualificacao implements defaultInterface{
     private int ano;
     private String siglaVeiculo;
     private String qualis;
