@@ -2,7 +2,7 @@ package objects;
 
 import java.util.List;
 
-public class Publicacao implements defaultInterface{
+public class Publicacao implements defaultInterface {
     private int ano;
     private String siglaVeiculo;
     private String titulo;
@@ -13,7 +13,7 @@ public class Publicacao implements defaultInterface{
     private int paginaInicial;
     private int paginaFinal;
 
-    public Publicacao(int ano, String siglaVeiculo, String titulo, List<Long> autores, int numero, int volume, String local, int paginaInicial, int paginaFinal) {
+    public Publicacao(int ano, String siglaVeiculo, String titulo, List<Long> autores, int numero, int volume, String local,int pagInicial, int pagFinal){
         this.ano = ano;
         this.siglaVeiculo = siglaVeiculo;
         this.titulo = titulo;
@@ -21,48 +21,37 @@ public class Publicacao implements defaultInterface{
         this.numero = numero;
         this.volume = volume;
         this.local = local;
-        this.paginaInicial = paginaInicial;
-        this.paginaFinal = paginaFinal;
+        this.paginaFinal = pagFinal;
+        this.paginaInicial = pagInicial;
     }
-
-    public int getAno() {
+    public int getAno(){
         return ano;
     }
-
-    public void showInfo(){
-        
-    }
-
-
-    public String getSiglaVeiculo() {
+    public String getSiglaVeiculo(){
         return siglaVeiculo;
     }
-
-    public String getTitulo() {
+    public String getTitulo(){
         return titulo;
     }
-
-    public List<Long> getAutores() {
+    public List<Long> getAutoresList(){
         return autores;
     }
-
-    public int getNumero() {
+    public int getNumero(){
         return numero;
     }
-
-    public int getVolume() {
+    public int getVolume(){
         return volume;
     }
-
-    public String getLocal() {
+    public String getLocal(){
         return local;
     }
-
-    public int getPaginaInicial() {
+    public int getPagInicial(){
         return paginaInicial;
     }
-
-    public int getPaginaFinal() {
+    public int getPagFinal(){
         return paginaFinal;
+    }
+    public void showInfo(){
+
     }
 }
