@@ -28,7 +28,7 @@ public class Docente implements defaultInterface{
         return nome;
     }
 
-    public boolean ehCoordenador(){
+    public boolean getStatus(){
         return coordenadorStatus;
     }
 

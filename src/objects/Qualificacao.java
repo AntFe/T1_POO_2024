@@ -4,7 +4,7 @@ public class Qualificacao implements defaultInterface{
     private int ano;
     private String siglaVeiculo;
     private String qualis;
-    private Veiculo veiculoRelacionado;
+    private float pontuacao;
 
     private void internalBuilder(int ano, String siglaVeiculo, String qualis){
         this.ano = ano;
@@ -18,17 +18,21 @@ public class Qualificacao implements defaultInterface{
         // this.qualis = qualis;
         internalBuilder(ano, siglaVeiculo, qualis);
     }
-    public Qualificacao(int ano, String siglaVeiculo, String qualis, Veiculo veiculoRelacionado){
+    public Qualificacao(int ano, String siglaVeiculo, String qualis, float pontuacao){
         internalBuilder(ano, siglaVeiculo, qualis);
-        this.veiculoRelacionado = veiculoRelacionado;
+        this.pontuacao = pontuacao;
     }
 
     public int getAno() {
         return ano;
     }
 
-    public void relacionarVeiculo(Veiculo veiculo){
-        this.veiculoRelacionado = veiculo;
+    public void relacionarVeiculo(float pontuacao){
+        this.pontuacao = pontuacao;
+    }
+
+    public float getPontuacaoBase(){
+        return pontuacao;
     }
 
     public void showInfo(){

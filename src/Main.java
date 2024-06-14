@@ -2,7 +2,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
-
+import java.io.FileWriter;
 import reader.LeitorCSV;
 import objects.*;
 
@@ -111,7 +111,15 @@ public class Main {
         try {
             Files.write(Paths.get(diretorio, "saida", "1-recredenciamento.csv"), linhas);
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            
+            //deixa o arquivo em branco
+            try {
+                FileWriter file = new FileWriter(diretorio + "/saida/1-recredenciamento.csv");
+                file.close();
+            } catch (IOException ioe){
+                ioe.printStackTrace();
+            } 
         }
     }
 
@@ -129,25 +137,15 @@ public class Main {
 
         for (Publicacao publicacao : publicacoes) {
             String qualis = qualificacaoRecente.getOrDefault(publicacao.getSiglaVeiculo(), "C");
-            String nomeVeiculo = veiculos.stream()
-                    .filter(v -> v.getSigla().equals(publicacao.getSiglaVeiculo()))
-                    .map(Veiculo::getNome)
-                    .findFirst()
-                    .orElse("Desconhecido");
 
-            String impacto = veiculos.stream()
-                    .filter(v -> v.getSigla().equals(publicacao.getSiglaVeiculo()))
-                    .map(Veiculo::getFatorImpacto)
-                    .findFirst()
-                    .orElse(0.0).toString();
+            /// isso vai dar problema na entrevista
+            /// usa função lambda e "ponteiro para um método"
+            String nomeVeiculo = veiculos.stream().filter(v -> v.getSigla().equals(publicacao.getSiglaVeiculo())).map(Veiculo::getNome).findFirst().orElse("Desconhecido");
 
-            List<String> nomesAutores = publicacao.getAutores().stream()
-                    .map(codigo -> docentes.stream()
-                            .filter(d -> d.getCodigo() == codigo)
-                            .map(Docente::getNome)
-                            .findFirst()
-                            .orElse("Desconhecido"))
-                    .collect(Collectors.toList());
+            /// tem que virar um numero com precisão 3 digitos
+            String impacto = veiculos.stream().filter(v -> v.getSigla().equals(publicacao.getSiglaVeiculo())).map(Veiculo::getFatorImpacto).findFirst().orElse(0.0).toString();
+
+            List<String> nomesAutores = publicacao.getAutores().stream().map(codigo -> docentes.stream().filter(d -> d.getCodigo() == codigo).map(Docente::getNome).findFirst().orElse("Desconhecido")).collect(Collectors.toList());
 
             linhas.add(String.format("%d;%s;%s;%s;%s;%s;%s", 
                 publicacao.getAno(), 
@@ -159,6 +157,7 @@ public class Main {
                 String.join(",", nomesAutores)));
         }
 
+        /// tem que gerar o arquivo vazio se der erro
         try {
             Files.write(Paths.get(diretorio, "saida", "2-publicacoes.csv"), linhas);
         } catch (IOException e) {
@@ -190,6 +189,7 @@ public class Main {
         }
 
         // Criação do arquivo CSV
+        /// Falta ordenar
         List<String> linhas = new ArrayList<>();
         linhas.add("Qualis;número de artigos;número de artigos por docente");
 

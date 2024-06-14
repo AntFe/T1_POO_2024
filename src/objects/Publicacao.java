@@ -32,8 +32,6 @@ public class Publicacao implements defaultInterface{
     public void showInfo(){
         
     }
-
-
     public String getSiglaVeiculo() {
         return siglaVeiculo;
     }

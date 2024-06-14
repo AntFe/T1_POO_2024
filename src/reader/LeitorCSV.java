@@ -149,7 +149,6 @@ public class LeitorCSV {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
             regras.add(new Regra(dataInicio, dataFim, qualisPontos, qtdeAnosPontos, qualisMinimos, qtdeAnosArtigos, pontuacaoMinima));
         }
         return regras;
